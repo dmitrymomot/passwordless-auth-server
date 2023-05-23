@@ -20,6 +20,7 @@ UPDATE ON tokens FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 
 -- +migrate Down
-DROP TABLE IF EXISTS tokens;
+-- +migrate StatementBegin
 DROP TRIGGER IF EXISTS update_tokens_modtime ON tokens;
+DROP TABLE IF EXISTS tokens;
 -- +migrate StatementEnd

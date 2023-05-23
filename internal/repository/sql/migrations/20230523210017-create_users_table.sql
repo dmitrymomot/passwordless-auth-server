@@ -16,6 +16,6 @@ UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 -- +migrate Down
 -- +migrate StatementBegin
-DROP TABLE IF EXISTS users;
 DROP TRIGGER IF EXISTS update_users_modtime ON users;
+DROP TABLE IF EXISTS users;
 -- +migrate StatementEnd
