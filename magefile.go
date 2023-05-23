@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/dmitrymomot/go-env"
@@ -43,12 +44,22 @@ func MigrateUp() error {
 		return fmt.Errorf("failed to prepare migration: %w", err)
 	}
 
+	// check if the .env file exists
+	if _, err := os.Stat(".env"); os.IsNotExist(err) {
+		return fmt.Errorf("the .env file does not exist")
+	}
+
 	color.Cyan("Running database migrations...")
 	return sh.RunV("go", "run", "./cmd/migrate/main.go")
 }
 
 // Up runs the application and the database migrations up
 func Up() error {
+	// check if the .env file exists
+	if _, err := os.Stat(".env"); os.IsNotExist(err) {
+		return fmt.Errorf("the .env file does not exist")
+	}
+
 	color.Cyan("Starting the database...")
 	if err := sh.RunV("docker-compose", "-f", "./deployments/docker-compose.yml", "up", "-d"); err != nil {
 		return err
