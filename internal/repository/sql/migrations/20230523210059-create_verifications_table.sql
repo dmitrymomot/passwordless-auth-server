@@ -1,5 +1,6 @@
 
 -- +migrate Up
+-- +migrate StatementBegin
 CREATE TABLE IF NOT EXISTS verifications (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id uuid NOT NULL REFERENCES users (id) ON DELETE CASCADE,
@@ -11,6 +12,7 @@ CREATE TABLE IF NOT EXISTS verifications (
 );
 CREATE INDEX IF NOT EXISTS verifications_user_id_idx ON verifications (user_id);
 CREATE INDEX IF NOT EXISTS verifications_expiry_idx ON verifications (expires_at);
+-- +migrate StatementEnd
 
 
 -- +migrate Down

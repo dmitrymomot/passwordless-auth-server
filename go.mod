@@ -18,6 +18,7 @@ require (
 	github.com/rubenv/sql-migrate v1.4.0
 	github.com/segmentio/ksuid v1.0.4
 	github.com/sirupsen/logrus v1.9.2
+	github.com/tabbed/pqtype v0.1.1
 	golang.org/x/sync v0.2.0
 )
 

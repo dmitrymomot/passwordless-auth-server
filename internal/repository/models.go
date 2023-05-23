@@ -9,7 +9,19 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/tabbed/pqtype"
 )
+
+type Token struct {
+	UserID           uuid.UUID             `json:"user_id"`
+	AccessTokenID    uuid.UUID             `json:"access_token_id"`
+	AccessExpiresAt  time.Time             `json:"access_expires_at"`
+	RefreshTokenID   uuid.UUID             `json:"refresh_token_id"`
+	RefreshExpiresAt time.Time             `json:"refresh_expires_at"`
+	CreatedAt        time.Time             `json:"created_at"`
+	UpdatedAt        sql.NullTime          `json:"updated_at"`
+	Metadata         pqtype.NullRawMessage `json:"metadata"`
+}
 
 type User struct {
 	ID        uuid.UUID    `json:"id"`

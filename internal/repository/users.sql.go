@@ -58,7 +58,7 @@ func (q *Queries) FindUserByID(ctx context.Context, id uuid.UUID) (User, error) 
 }
 
 const storeOrUpdateUser = `-- name: StoreOrUpdateUser :one
-INSERT INTO users (email) VALUES ($1) ON CONFLICT (email) DO UPDATE SET updated_at = now() RETURNING id, email, verified, updated_at, created_at
+INSERT INTO users (email) VALUES ($1) ON CONFLICT (email) DO NOTHING RETURNING id, email, verified, updated_at, created_at
 `
 
 // Store or update a user
