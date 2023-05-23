@@ -53,7 +53,7 @@ func MigrateUp() error {
 	return sh.RunV("go", "run", "./cmd/migrate/main.go")
 }
 
-// Up runs the application and the database migrations up
+// Up runs the application and the database migrations up.
 func Up() error {
 	// check if the .env file exists
 	if _, err := os.Stat(".env"); os.IsNotExist(err) {
