@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/dmitrymomot/go-utils"
-	"github.com/dmitrymomot/itm-api/pkg/httpx"
+	"github.com/dmitrymomot/passwordless-auth-server/pkg/httpx"
 	"github.com/go-chi/jwtauth"
 )
 
